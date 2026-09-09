@@ -1,10 +1,17 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Abdulrahman Aleid",
+    "objectID": "posts/first-weeks/index.html",
+    "href": "posts/first-weeks/index.html",
+    "title": "My first weeks in MDS",
     "section": "",
-    "text": "I am an international student from Saudi Arabia and a graduate of Prince Mohammad bin Fahd University, where I earned my bachelor’s degree in Information Technology. Following graduation, I joined Saudi Aramco and worked for four years as a Business Systems Analyst. Upon completing the MDS program, I plan to transition my career toward Data Science."
+    "text": "Orientation day on campus.\n\n\nMDS orientation spanned across three days, during which we were introduced to the program, faculty, and our new learning environment. One of the most exciting parts of orientation was the GooseChase activity that took place on the final day. We explored the UBC campus, visited different buildings, and got to see our classrooms. This experience helped me become more familiar with the campus and made me feel more comfortable and connected to the MDS community. It was a great way to start this new journey and, most importantly, made me feel like I truly belonged!\nIn the first week of classes, everything happened very quickly. Because of the intensity of the program, it felt like I had already been part of the program for much longer than just one week. I made sure to become familiar and comfortable with the different tools and platforms we use for our courses. Once our classes and labs began, I focused on completing my assignments early so that I could meet the submission deadlines by the end of the week.\nAlthough the first week of the MDS program was overwhelming, it quickly pushed me into “fight mode” and motivated me to challenge myself. I learned to manage my time effectively, stay organized, and prioritize my responsibilities so that I could accomplish all of my tasks on time."
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 9, 2026\n\n\nAbdulrahman Aleid\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -12,20 +19,6 @@
     "title": "About",
     "section": "",
     "text": "I grew up in Saudi Arabia, where I studied Information Technology at Prince Mohammad bin Fahd University. After earning my bachelor’s degree, I enrolled in a three-month Data Science program hosted by the Misk Foundation. Upon completing the program, I joined Saudi Aramco as an Associate Business Systems Analyst, where I worked for four years."
-  },
-  {
-    "objectID": "about.html#why-data-science-my-major-project-for-my-bachelors-degree-involved-training-a-machine-learning-model-to-optimize-issue-classification-for-software-engineers.-this-project-sparked-my-interest-in-data-science-as-it-introduced-me-to-the-various-tools-and-techniques-used-in-the-field.-i-quickly-found-myself-fascinated-by-the-field-and-eager-to-explore-its-applications-further.",
-    "href": "about.html#why-data-science-my-major-project-for-my-bachelors-degree-involved-training-a-machine-learning-model-to-optimize-issue-classification-for-software-engineers.-this-project-sparked-my-interest-in-data-science-as-it-introduced-me-to-the-various-tools-and-techniques-used-in-the-field.-i-quickly-found-myself-fascinated-by-the-field-and-eager-to-explore-its-applications-further.",
-    "title": "About",
-    "section": "Why data science: My major project for my bachelor’s degree involved training a machine learning model to optimize issue classification for software engineers. This project sparked my interest in data science, as it introduced me to the various tools and techniques used in the field. I quickly found myself fascinated by the field and eager to explore its applications further.",
-    "text": "Why data science: My major project for my bachelor’s degree involved training a machine learning model to optimize issue classification for software engineers. This project sparked my interest in data science, as it introduced me to the various tools and techniques used in the field. I quickly found myself fascinated by the field and eager to explore its applications further."
-  },
-  {
-    "objectID": "about.html#outside-of-data-science-during-my-leisure-time-i-mostly-enjoy-spending-time-with-my-family-watching-movies-and-visiting-various-attractions-around-vancouver.",
-    "href": "about.html#outside-of-data-science-during-my-leisure-time-i-mostly-enjoy-spending-time-with-my-family-watching-movies-and-visiting-various-attractions-around-vancouver.",
-    "title": "About",
-    "section": "Outside of data science: During my leisure time, I mostly enjoy spending time with my family, watching movies, and visiting various attractions around Vancouver.",
-    "text": "Outside of data science: During my leisure time, I mostly enjoy spending time with my family, watching movies, and visiting various attractions around Vancouver."
   },
   {
     "objectID": "about.html#background",
@@ -49,17 +42,10 @@
     "text": "Outside of data science\nDuring my leisure time, I mostly enjoy spending time with my family, watching movies, and visiting various attractions around Vancouver."
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Abdulrahman Aleid",
     "section": "",
-    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 9, 2026\n\n\nAbdulrahman Aleid\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/first-weeks/index.html",
-    "href": "posts/first-weeks/index.html",
-    "title": "My first weeks in MDS",
-    "section": "",
-    "text": "Orientation day on campus.\n\n\nMDS orientation spanned across three days, during which we were introduced to the program, faculty, and our new learning environment. One of the most exciting parts of orientation was the GooseChase activity that took place on the final day. We explored the UBC campus, visited different buildings, and got to see our classrooms. This experience helped me become more familiar with the campus and made me feel more comfortable and connected to the MDS community. It was a great way to start this new journey and, most importantly, made me feel like I truly belonged!\nIn the first week of classes, everything happened very quickly. Because of the intensity of the program, it felt like I had already been part of the program for much longer than just one week. I made sure to become familiar and comfortable with the different tools and platforms we use for our courses. Once our classes and labs began, I focused on completing my assignments early so that I could meet the submission deadlines by the end of the week.\nAlthough the first week of the MDS program was overwhelming, it quickly pushed me into “fight mode” and motivated me to challenge myself. I learned to manage my time effectively, stay organized, and prioritize my responsibilities so that I could accomplish all of my tasks on time."
+    "text": "I am an international student from Saudi Arabia and a graduate of Prince Mohammad bin Fahd University, where I earned my bachelor’s degree in Information Technology. Following graduation, I joined Saudi Aramco and worked for four years as a Business Systems Analyst. Upon completing the MDS program, I plan to transition my career toward Data Science."
   }
 ]
