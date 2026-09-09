@@ -1,7 +1,8 @@
 ---
-title: "Abdulrahman's Website"
+title: "Abdulrahman Aleid"
+about:
+  template: jolla
+  image: images/profile.jpg
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I am an international student from Saudi Arabia and a graduate of Prince Mohammad bin Fahd University, where I earned my bachelor's degree in Information Technology. Following graduation, I joined Saudi Aramco and worked for four years as a Business Systems Analyst. Upon completing the MDS program, I plan to transition my career toward Data Science.

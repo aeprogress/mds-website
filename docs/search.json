@@ -2,15 +2,50 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Abdulrahman’s Website",
+    "title": "Abdulrahman Aleid",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "I am an international student from Saudi Arabia and a graduate of Prince Mohammad bin Fahd University, where I earned my bachelor’s degree in Information Technology. Following graduation, I joined Saudi Aramco and worked for four years as a Business Systems Analyst. Upon completing the MDS program, I plan to transition my career toward Data Science."
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "I grew up in Saudi Arabia, where I studied Information Technology at Prince Mohammad bin Fahd University. After earning my bachelor’s degree, I enrolled in a three-month Data Science program hosted by the Misk Foundation. Upon completing the program, I joined Saudi Aramco as an Associate Business Systems Analyst, where I worked for four years."
+  },
+  {
+    "objectID": "about.html#why-data-science-my-major-project-for-my-bachelors-degree-involved-training-a-machine-learning-model-to-optimize-issue-classification-for-software-engineers.-this-project-sparked-my-interest-in-data-science-as-it-introduced-me-to-the-various-tools-and-techniques-used-in-the-field.-i-quickly-found-myself-fascinated-by-the-field-and-eager-to-explore-its-applications-further.",
+    "href": "about.html#why-data-science-my-major-project-for-my-bachelors-degree-involved-training-a-machine-learning-model-to-optimize-issue-classification-for-software-engineers.-this-project-sparked-my-interest-in-data-science-as-it-introduced-me-to-the-various-tools-and-techniques-used-in-the-field.-i-quickly-found-myself-fascinated-by-the-field-and-eager-to-explore-its-applications-further.",
+    "title": "About",
+    "section": "Why data science: My major project for my bachelor’s degree involved training a machine learning model to optimize issue classification for software engineers. This project sparked my interest in data science, as it introduced me to the various tools and techniques used in the field. I quickly found myself fascinated by the field and eager to explore its applications further.",
+    "text": "Why data science: My major project for my bachelor’s degree involved training a machine learning model to optimize issue classification for software engineers. This project sparked my interest in data science, as it introduced me to the various tools and techniques used in the field. I quickly found myself fascinated by the field and eager to explore its applications further."
+  },
+  {
+    "objectID": "about.html#outside-of-data-science-during-my-leisure-time-i-mostly-enjoy-spending-time-with-my-family-watching-movies-and-visiting-various-attractions-around-vancouver.",
+    "href": "about.html#outside-of-data-science-during-my-leisure-time-i-mostly-enjoy-spending-time-with-my-family-watching-movies-and-visiting-various-attractions-around-vancouver.",
+    "title": "About",
+    "section": "Outside of data science: During my leisure time, I mostly enjoy spending time with my family, watching movies, and visiting various attractions around Vancouver.",
+    "text": "Outside of data science: During my leisure time, I mostly enjoy spending time with my family, watching movies, and visiting various attractions around Vancouver."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About",
+    "section": "",
+    "text": "I grew up in Saudi Arabia, where I studied Information Technology at Prince Mohammad bin Fahd University. After earning my bachelor’s degree, I enrolled in a three-month Data Science program hosted by the Misk Foundation. Upon completing the program, I joined Saudi Aramco as an Associate Business Systems Analyst, where I worked for four years."
+  },
+  {
+    "objectID": "about.html#why-data-science",
+    "href": "about.html#why-data-science",
+    "title": "About",
+    "section": "Why data science",
+    "text": "Why data science\nMy major project for my bachelor’s degree involved training a machine learning model to optimize issue classification for software engineers. This project sparked my interest in data science, as it introduced me to the various tools and techniques used in the field. I quickly found myself fascinated by the field and eager to explore its applications further."
+  },
+  {
+    "objectID": "about.html#outside-of-data-science",
+    "href": "about.html#outside-of-data-science",
+    "title": "About",
+    "section": "Outside of data science",
+    "text": "Outside of data science\nDuring my leisure time, I mostly enjoy spending time with my family, watching movies, and visiting various attractions around Vancouver."
   }
 ]

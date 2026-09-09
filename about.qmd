@@ -2,4 +2,11 @@
 title: "About"
 ---
 
-About this site
+## Background 
+I grew up in Saudi Arabia, where I studied Information Technology at Prince Mohammad bin Fahd University. After earning my bachelor’s degree, I enrolled in a three-month Data Science program hosted by the Misk Foundation. Upon completing the program, I joined Saudi Aramco as an Associate Business Systems Analyst, where I worked for four years.
+
+## Why data science
+My major project for my bachelor’s degree involved training a machine learning model to optimize issue classification for software engineers. This project sparked my interest in data science, as it introduced me to the various tools and techniques used in the field. I quickly found myself fascinated by the field and eager to explore its applications further.
+
+## Outside of data science
+During my leisure time, I mostly enjoy spending time with my family, watching movies, and visiting various attractions around Vancouver.
