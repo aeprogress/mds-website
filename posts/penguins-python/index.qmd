@@ -84,4 +84,10 @@ plt.show()
 
 ## What I found
 
-After dropping the 2 of 344 penguins with missing measurements, Gentoo penguins stand out as the heaviest species, averaging about 5,076 g, while Chinstrap (about 3,733 g) and Adelie (about 3,701 g) are nearly identical, differing by only about 30 g, which is small next to their spreads of roughly 400 to 450 g. The scatter plot shows that penguins with longer flippers tend to be heavier, and the Gentoo form their own distinct cluster with both longer flippers and greater mass than the other two species.
+After dropping the 2 of 344 penguins with missing measurements, 
+Gentoo penguins stand out as the heaviest species, averaging about 5,076 g, 
+while Chinstrap (about 3,733 g) and Adelie (about 3,701 g) are nearly identical, 
+differing by only about 30 g, which is small next to their spreads of roughly 400 to 450 g. 
+The scatter plot shows that penguins with longer flippers tend to be heavier, 
+and the Gentoo form their own distinct cluster with both longer flippers and 
+greater mass than the other two species.

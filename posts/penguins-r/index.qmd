@@ -1,0 +1,98 @@
+---
+title: "Penguin body mass by species and sex, in R"
+author: "Abdulrahman Aleid"
+date: "2026-09-23"
+categories: [r, analysis]
+---
+
+Data: [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/),
+collected by Dr. Kristen Gorman at Palmer Station Antarctica LTER and
+released under CC0. Loaded from the `palmerpenguins` R package.
+Citation: Horst AM, Hill AP, Gorman KB (2020). *palmerpenguins: Palmer
+Archipelago (Antarctica) penguin data*. doi:10.5281/zenodo.3960218.
+
+In this post I repeat my species comparison in R and add a second
+question: does body mass also differ between male and female penguins
+within each species?
+
+## Setup
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+library(palmerpenguins)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+```
+
+## Load and inspect the data
+
+```{r}
+penguins <- palmerpenguins::penguins
+dim(penguins)
+glimpse(penguins)
+```
+
+## Clean
+
+```{r}
+colSums(is.na(penguins))
+```
+
+```{r}
+penguins_clean <- penguins |>
+  filter(!is.na(body_mass_g), !is.na(flipper_length_mm))
+
+nrow(penguins) - nrow(penguins_clean)
+```
+
+## Summarise
+
+```{r}
+#| label: tbl-mass-species
+#| tbl-cap: "Body mass by species."
+penguins_clean |>
+  group_by(species) |>
+  summarise(
+    n = n(),
+    mean_g = round(mean(body_mass_g), 1),
+    sd_g = round(sd(body_mass_g), 1)
+  ) |>
+  arrange(desc(mean_g)) |>
+  kable()
+```
+
+```{r}
+#| label: tbl-mass-species-sex
+#| tbl-cap: "Mean body mass by species and sex."
+penguins_clean |>
+  filter(!is.na(sex)) |>
+  group_by(species, sex) |>
+  summarise(n = n(), mean_g = round(mean(body_mass_g), 1), .groups = "drop") |>
+  kable()
+```
+
+## Visualise
+
+```{r}
+#| label: fig-penguin-mass-r
+#| fig-cap: "Body mass of penguins by species and sex."
+penguins_clean |>
+  filter(!is.na(sex)) |>
+  ggplot(aes(x = species, y = body_mass_g, fill = sex)) +
+  geom_boxplot() +
+  labs(x = "Species", y = "Body mass (g)", fill = "Sex") +
+  theme_minimal()
+```
+
+## What I found
+
+@tbl-mass-species reproduces my Python result. Gentoo penguins are
+by far the heaviest, averaging about 5,076 g, while Chinstrap and
+Adelie are nearly identical at around 3,700 g. @tbl-mass-species-sex
+and @fig-penguin-mass-r add the second question. In every species,
+males are heavier than females, and the gap is visible in the boxplot
+for all three. Sex is missing for a few birds, so those are left out
+of the sex comparison.
