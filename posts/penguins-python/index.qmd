@@ -1,0 +1,87 @@
+---
+title: "Penguin body mass by species, in Python"
+author: "Abdulrahman Aleid"
+date: "2026-09-23"
+categories: [python, analysis]
+---
+
+Data: [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/),
+collected by Dr. Kristen Gorman at Palmer Station Antarctica LTER and
+released under CC0. Loaded from the `palmerpenguins` Python package.
+Citation: Horst AM, Hill AP, Gorman KB (2020). *palmerpenguins: Palmer
+Archipelago (Antarctica) penguin data*. doi:10.5281/zenodo.3960218.
+
+In this post I look at how body mass differs across the three penguin species in the Palmer Penguins data, and whether flipper length tracks body mass.
+
+## Setup
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+from palmerpenguins import load_penguins
+```
+
+## Load and inspect the data
+
+```{python}
+penguins = load_penguins()
+print(penguins.shape)
+penguins.head()
+```
+
+## Clean
+
+```{python}
+penguins.isna().sum()
+```
+
+```{python}
+penguins_clean = penguins.dropna(subset=["body_mass_g", "flipper_length_mm"])
+print(f"Dropped {len(penguins) - len(penguins_clean)} rows with missing measurements.")
+```
+
+## Summarise by species
+
+```{python}
+summary = (
+    penguins_clean
+    .groupby("species")["body_mass_g"]
+    .agg(n="count", mean_g="mean", sd_g="std")
+    .round(1)
+    .sort_values("mean_g", ascending=False)
+)
+summary
+```
+
+## Visualise
+
+@fig-penguin-mass-py shows the spread of body mass within each species.
+
+```{python}
+#| label: fig-penguin-mass-py
+#| fig-cap: "Body mass of penguins by species."
+species = sorted(penguins_clean["species"].unique())
+masses = [penguins_clean.loc[penguins_clean["species"] == s, "body_mass_g"] for s in species]
+
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.boxplot(masses, tick_labels=species)
+ax.set_xlabel("Species")
+ax.set_ylabel("Body mass (g)")
+plt.show()
+```
+
+```{python}
+#| label: fig-flipper-mass-py
+#| fig-cap: "Flipper length against body mass, coloured by species."
+fig, ax = plt.subplots(figsize=(6, 4))
+for s, group in penguins_clean.groupby("species"):
+    ax.scatter(group["flipper_length_mm"], group["body_mass_g"], label=s, alpha=0.7)
+ax.set_xlabel("Flipper length (mm)")
+ax.set_ylabel("Body mass (g)")
+ax.legend(title="Species")
+plt.show()
+```
+
+## What I found
+
+After dropping the 2 of 344 penguins with missing measurements, Gentoo penguins stand out as the heaviest species, averaging about 5,076 g, while Chinstrap (about 3,733 g) and Adelie (about 3,701 g) are nearly identical, differing by only about 30 g, which is small next to their spreads of roughly 400 to 450 g. The scatter plot shows that penguins with longer flippers tend to be heavier, and the Gentoo form their own distinct cluster with both longer flippers and greater mass than the other two species.
