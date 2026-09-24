@@ -45,6 +45,10 @@ Run every command below in a terminal from the top level of the repository
    uv run quarto render
 ```
 
+The post in `posts/r-and-python/` runs R and Python together through the
+`reticulate` R package, which uses the Python environment in `.venv`.
+That is why `uv sync` (step 2) must run before rendering.
+
 ## View the built site
 
 The rendered site is written to `docs/`. Open `docs/index.html` in a browser:

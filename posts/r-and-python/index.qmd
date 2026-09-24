@@ -1,0 +1,94 @@
+---
+title: "R and Python together: penguin body mass by species and sex"
+author: "Abdulrahman Aleid"
+date: "2026-09-23"
+categories: [r, python, reticulate]
+engine: knitr
+---
+
+Data: [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/),
+collected by Dr. Kristen Gorman at Palmer Station Antarctica LTER and
+released under CC0. Loaded from the `palmerpenguins` R package.
+Citation: Horst AM, Hill AP, Gorman KB (2020). *palmerpenguins: Palmer
+Archipelago (Antarctica) penguin data*. doi:10.5281/zenodo.3960218.
+
+This post uses both languages in one document. R prepares the data,
+Python calculates the average body mass for each species and sex, and
+R takes that summary back to build a table and a chart. The two
+languages share one session through the `reticulate` package.
+
+## Setup (R)
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+library(reticulate)
+use_virtualenv("../../.venv", required = TRUE)
+
+library(dplyr)
+library(ggplot2)
+library(knitr)
+```
+
+## Prepare the data (R)
+
+```{r}
+penguins_clean <- palmerpenguins::penguins |>
+  filter(!is.na(body_mass_g), !is.na(sex)) |>
+  select(species, sex, body_mass_g)
+
+nrow(penguins_clean)
+```
+
+## Summarise (Python)
+
+Python reads the R data frame as `r.penguins_clean`, which arrives as a
+pandas DataFrame.
+
+```{python}
+import pandas as pd
+
+penguins = r.penguins_clean
+print(type(penguins))
+
+penguins["body_mass_kg"] = penguins["body_mass_g"] / 1000
+
+summary = (
+    penguins
+    .groupby(["species", "sex"], observed=True)["body_mass_kg"]
+    .agg(n="count", mean_kg="mean")
+    .round(2)
+    .reset_index()
+)
+summary
+```
+
+## Bring the summary back (R)
+
+R reads the Python DataFrame as `py$summary`, which arrives as an R
+data frame.
+
+```{r}
+#| label: tbl-summary
+#| tbl-cap: "Mean body mass (kg) by species and sex, computed in Python."
+summary <- py$summary
+class(summary)
+kable(summary)
+```
+
+```{r}
+#| label: fig-summary
+#| fig-cap: "Mean body mass by species and sex, plotted in R from the Python summary."
+ggplot(summary, aes(x = species, y = mean_kg, fill = sex)) +
+  geom_col(position = "dodge") +
+  labs(x = "Species", y = "Mean body mass (kg)", fill = "Sex") +
+  theme_minimal()
+```
+
+## What I found
+
+@tbl-summary and @fig-summary show that males are heavier than females
+in all three species, and that Gentoo penguins are the heaviest for both
+sexes. The averages were calculated in Python, and the table and chart
+were made in R from that same result.
