@@ -1,5 +1,54 @@
 [
   {
+    "objectID": "posts/penguins-r/index.html",
+    "href": "posts/penguins-r/index.html",
+    "title": "Penguin body mass by species and sex, in R",
+    "section": "",
+    "text": "Data: Palmer Penguins, collected by Dr. Kristen Gorman at Palmer Station Antarctica LTER and released under CC0. Loaded from the palmerpenguins R package. Citation: Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. doi:10.5281/zenodo.3960218.\nIn this post I repeat my species comparison in R and add a second question: does body mass also differ between male and female penguins within each species?"
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#setup",
+    "href": "posts/penguins-r/index.html#setup",
+    "title": "Penguin body mass by species and sex, in R",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(palmerpenguins)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(knitr)"
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#load-and-inspect-the-data",
+    "href": "posts/penguins-r/index.html#load-and-inspect-the-data",
+    "title": "Penguin body mass by species and sex, in R",
+    "section": "Load and inspect the data",
+    "text": "Load and inspect the data\n\npenguins &lt;- palmerpenguins::penguins\ndim(penguins)\n\n[1] 344   8\n\nglimpse(penguins)\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#clean",
+    "href": "posts/penguins-r/index.html#clean",
+    "title": "Penguin body mass by species and sex, in R",
+    "section": "Clean",
+    "text": "Clean\n\ncolSums(is.na(penguins))\n\n          species            island    bill_length_mm     bill_depth_mm \n                0                 0                 2                 2 \nflipper_length_mm       body_mass_g               sex              year \n                2                 2                11                 0 \n\n\n\npenguins_clean &lt;- penguins |&gt;\n  filter(!is.na(body_mass_g), !is.na(flipper_length_mm))\n\nnrow(penguins) - nrow(penguins_clean)\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#summarise",
+    "href": "posts/penguins-r/index.html#summarise",
+    "title": "Penguin body mass by species and sex, in R",
+    "section": "Summarise",
+    "text": "Summarise\n\npenguins_clean |&gt;\n  group_by(species) |&gt;\n  summarise(\n    n = n(),\n    mean_g = round(mean(body_mass_g), 1),\n    sd_g = round(sd(body_mass_g), 1)\n  ) |&gt;\n  arrange(desc(mean_g)) |&gt;\n  kable()\n\n\n\nTable 1: Body mass by species.\n\n\n\n\n\n\nspecies\nn\nmean_g\nsd_g\n\n\n\n\nGentoo\n123\n5076.0\n504.1\n\n\nChinstrap\n68\n3733.1\n384.3\n\n\nAdelie\n151\n3700.7\n458.6\n\n\n\n\n\n\n\n\n\npenguins_clean |&gt;\n  filter(!is.na(sex)) |&gt;\n  group_by(species, sex) |&gt;\n  summarise(n = n(), mean_g = round(mean(body_mass_g), 1), .groups = \"drop\") |&gt;\n  kable()\n\n\n\nTable 2: Mean body mass by species and sex.\n\n\n\n\n\n\nspecies\nsex\nn\nmean_g\n\n\n\n\nAdelie\nfemale\n73\n3368.8\n\n\nAdelie\nmale\n73\n4043.5\n\n\nChinstrap\nfemale\n34\n3527.2\n\n\nChinstrap\nmale\n34\n3939.0\n\n\nGentoo\nfemale\n58\n4679.7\n\n\nGentoo\nmale\n61\n5484.8"
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#visualise",
+    "href": "posts/penguins-r/index.html#visualise",
+    "title": "Penguin body mass by species and sex, in R",
+    "section": "Visualise",
+    "text": "Visualise\n\npenguins_clean |&gt;\n  filter(!is.na(sex)) |&gt;\n  ggplot(aes(x = species, y = body_mass_g, fill = sex)) +\n  geom_boxplot() +\n  labs(x = \"Species\", y = \"Body mass (g)\", fill = \"Sex\") +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Body mass of penguins by species and sex."
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#what-i-found",
+    "href": "posts/penguins-r/index.html#what-i-found",
+    "title": "Penguin body mass by species and sex, in R",
+    "section": "What I found",
+    "text": "What I found\nTable 1 reproduces my Python result. Gentoo penguins are by far the heaviest, averaging about 5,076 g, while Chinstrap and Adelie are nearly identical at around 3,700 g. Table 2 and Figure 1 add the second question. In every species, males are heavier than females, and the gap is visible in the boxplot for all three. Sex is missing for a few birds, so those are left out of the sex comparison."
+  },
+  {
     "objectID": "posts/first-weeks/index.html",
     "href": "posts/first-weeks/index.html",
     "title": "My first weeks in MDS",
@@ -11,7 +60,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 9, 2026\n\n\nAbdulrahman Aleid\n\n\n\n\n\nNo matching items"
+    "text": "Penguin body mass by species, in Python\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nAbdulrahman Aleid\n\n\n\n\n\n\n\n\n\n\n\n\nPenguin body mass by species and sex, in R\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nAbdulrahman Aleid\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 9, 2026\n\n\nAbdulrahman Aleid\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -47,5 +96,54 @@
     "title": "Abdulrahman Aleid",
     "section": "",
     "text": "I am an international student from Saudi Arabia and a graduate of Prince Mohammad bin Fahd University, where I earned my bachelor’s degree in Information Technology. Following graduation, I joined Saudi Aramco and worked for four years as a Business Systems Analyst. Upon completing the MDS program, I plan to transition my career toward Data Science."
+  },
+  {
+    "objectID": "posts/penguins-python/index.html",
+    "href": "posts/penguins-python/index.html",
+    "title": "Penguin body mass by species, in Python",
+    "section": "",
+    "text": "Data: Palmer Penguins, collected by Dr. Kristen Gorman at Palmer Station Antarctica LTER and released under CC0. Loaded from the palmerpenguins Python package. Citation: Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. doi:10.5281/zenodo.3960218.\nIn this post I look at how body mass differs across the three penguin species in the Palmer Penguins data, and whether flipper length tracks body mass."
+  },
+  {
+    "objectID": "posts/penguins-python/index.html#setup",
+    "href": "posts/penguins-python/index.html#setup",
+    "title": "Penguin body mass by species, in Python",
+    "section": "Setup",
+    "text": "Setup\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom palmerpenguins import load_penguins"
+  },
+  {
+    "objectID": "posts/penguins-python/index.html#load-and-inspect-the-data",
+    "href": "posts/penguins-python/index.html#load-and-inspect-the-data",
+    "title": "Penguin body mass by species, in Python",
+    "section": "Load and inspect the data",
+    "text": "Load and inspect the data\n\npenguins = load_penguins()\nprint(penguins.shape)\npenguins.head()\n\n(344, 8)\n\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nmale\n2007\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nfemale\n2007\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n2007\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nfemale\n2007"
+  },
+  {
+    "objectID": "posts/penguins-python/index.html#clean",
+    "href": "posts/penguins-python/index.html#clean",
+    "title": "Penguin body mass by species, in Python",
+    "section": "Clean",
+    "text": "Clean\n\npenguins.isna().sum()\n\nspecies               0\nisland                0\nbill_length_mm        2\nbill_depth_mm         2\nflipper_length_mm     2\nbody_mass_g           2\nsex                  11\nyear                  0\ndtype: int64\n\n\n\npenguins_clean = penguins.dropna(subset=[\"body_mass_g\", \"flipper_length_mm\"])\nprint(f\"Dropped {len(penguins) - len(penguins_clean)} rows with missing measurements.\")\n\nDropped 2 rows with missing measurements."
+  },
+  {
+    "objectID": "posts/penguins-python/index.html#summarise-by-species",
+    "href": "posts/penguins-python/index.html#summarise-by-species",
+    "title": "Penguin body mass by species, in Python",
+    "section": "Summarise by species",
+    "text": "Summarise by species\n\nsummary = (\n    penguins_clean\n    .groupby(\"species\")[\"body_mass_g\"]\n    .agg(n=\"count\", mean_g=\"mean\", sd_g=\"std\")\n    .round(1)\n    .sort_values(\"mean_g\", ascending=False)\n)\nsummary\n\n\n\n\n\n\n\n\nn\nmean_g\nsd_g\n\n\nspecies\n\n\n\n\n\n\n\nGentoo\n123\n5076.0\n504.1\n\n\nChinstrap\n68\n3733.1\n384.3\n\n\nAdelie\n151\n3700.7\n458.6"
+  },
+  {
+    "objectID": "posts/penguins-python/index.html#visualise",
+    "href": "posts/penguins-python/index.html#visualise",
+    "title": "Penguin body mass by species, in Python",
+    "section": "Visualise",
+    "text": "Visualise\nFigure 1 shows the spread of body mass within each species.\n\nspecies = sorted(penguins_clean[\"species\"].unique())\nmasses = [penguins_clean.loc[penguins_clean[\"species\"] == s, \"body_mass_g\"] for s in species]\n\nfig, ax = plt.subplots(figsize=(6, 4))\nax.boxplot(masses, tick_labels=species)\nax.set_xlabel(\"Species\")\nax.set_ylabel(\"Body mass (g)\")\nplt.show()\n\n\n\n\n\n\n\nFigure 1: Body mass of penguins by species.\n\n\n\n\n\n\nfig, ax = plt.subplots(figsize=(6, 4))\nfor s, group in penguins_clean.groupby(\"species\"):\n    ax.scatter(group[\"flipper_length_mm\"], group[\"body_mass_g\"], label=s, alpha=0.7)\nax.set_xlabel(\"Flipper length (mm)\")\nax.set_ylabel(\"Body mass (g)\")\nax.legend(title=\"Species\")\nplt.show()\n\n\n\n\n\n\n\nFigure 2: Flipper length against body mass, coloured by species."
+  },
+  {
+    "objectID": "posts/penguins-python/index.html#what-i-found",
+    "href": "posts/penguins-python/index.html#what-i-found",
+    "title": "Penguin body mass by species, in Python",
+    "section": "What I found",
+    "text": "What I found\nAfter dropping the 2 of 344 penguins with missing measurements, Gentoo penguins stand out as the heaviest species, averaging about 5,076 g, while Chinstrap (about 3,733 g) and Adelie (about 3,701 g) are nearly identical, differing by only about 30 g, which is small next to their spreads of roughly 400 to 450 g. The scatter plot shows that penguins with longer flippers tend to be heavier, and the Gentoo form their own distinct cluster with both longer flippers and greater mass than the other two species."
   }
 ]
